@@ -22,6 +22,15 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// @title           Mentori API
+// @version         1.0
+// @description     Mentorship platform API with JWT authentication
+// @host            localhost:8080
+// @BasePath        /api/v1
+// @securityDefinitions.apikey BearerAuth
+// @in header
+// @name Authorization
+// @description Enter your JWT token (Swagger will automatically add "Bearer" prefix)
 func main() {
 	// 🚀 OPTIMIZATION: Set Gin mode based on environment
 	if os.Getenv("ENV") == "production" {

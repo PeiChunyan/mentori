@@ -52,25 +52,25 @@ const docTemplate = `{
                     "400": {
                         "description": "Invalid user ID",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "403": {
                         "description": "Forbidden - Admin access required",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "User not found",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -96,7 +96,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.LoginRequest"
+                            "$ref": "#/definitions/models.LoginRequest"
                         }
                     }
                 ],
@@ -104,25 +104,25 @@ const docTemplate = `{
                     "200": {
                         "description": "Login successful",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.AuthResponse"
+                            "$ref": "#/definitions/models.AuthResponse"
                         }
                     },
                     "400": {
                         "description": "Invalid input data",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "401": {
                         "description": "Invalid credentials",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -175,19 +175,19 @@ const docTemplate = `{
                     "200": {
                         "description": "User profile",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.UserResponse"
+                            "$ref": "#/definitions/models.UserResponse"
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "User not found",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -213,7 +213,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.RegisterRequest"
+                            "$ref": "#/definitions/models.RegisterRequest"
                         }
                     }
                 ],
@@ -221,25 +221,25 @@ const docTemplate = `{
                     "201": {
                         "description": "User created successfully",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.AuthResponse"
+                            "$ref": "#/definitions/models.AuthResponse"
                         }
                     },
                     "400": {
                         "description": "Invalid input data",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "409": {
                         "description": "User already exists",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -264,25 +264,25 @@ const docTemplate = `{
                     "200": {
                         "description": "User profile",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.Profile"
+                            "$ref": "#/definitions/models.Profile"
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Profile not found",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -311,7 +311,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.UpdateProfileRequest"
+                            "$ref": "#/definitions/models.UpdateProfileRequest"
                         }
                     }
                 ],
@@ -319,31 +319,31 @@ const docTemplate = `{
                     "200": {
                         "description": "Profile updated successfully",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.Profile"
+                            "$ref": "#/definitions/models.Profile"
                         }
                     },
                     "400": {
                         "description": "Invalid input data",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Profile not found",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -372,7 +372,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.CreateProfileRequest"
+                            "$ref": "#/definitions/models.CreateProfileRequest"
                         }
                     }
                 ],
@@ -380,31 +380,31 @@ const docTemplate = `{
                     "201": {
                         "description": "Profile created successfully",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.Profile"
+                            "$ref": "#/definitions/models.Profile"
                         }
                     },
                     "400": {
                         "description": "Invalid input data",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "409": {
                         "description": "Profile already exists",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -436,19 +436,19 @@ const docTemplate = `{
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "404": {
                         "description": "Profile not found",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -516,14 +516,14 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/mentori_internal_models.Profile"
+                                "$ref": "#/definitions/models.Profile"
                             }
                         }
                     },
                     "500": {
                         "description": "Internal server error",
                         "schema": {
-                            "$ref": "#/definitions/mentori_internal_models.ErrorResponse"
+                            "$ref": "#/definitions/models.ErrorResponse"
                         }
                     }
                 }
@@ -531,18 +531,18 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "mentori_internal_models.AuthResponse": {
+        "models.AuthResponse": {
             "type": "object",
             "properties": {
                 "token": {
                     "type": "string"
                 },
                 "user": {
-                    "$ref": "#/definitions/mentori_internal_models.UserResponse"
+                    "$ref": "#/definitions/models.UserResponse"
                 }
             }
         },
-        "mentori_internal_models.CreateProfileRequest": {
+        "models.CreateProfileRequest": {
             "type": "object",
             "required": [
                 "first_name",
@@ -578,7 +578,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.ErrorResponse": {
+        "models.ErrorResponse": {
             "type": "object",
             "properties": {
                 "code": {
@@ -592,7 +592,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.LoginRequest": {
+        "models.LoginRequest": {
             "type": "object",
             "required": [
                 "email",
@@ -607,7 +607,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.Profile": {
+        "models.Profile": {
             "type": "object",
             "properties": {
                 "avatar_url": {
@@ -656,7 +656,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.RegisterRequest": {
+        "models.RegisterRequest": {
             "type": "object",
             "required": [
                 "email",
@@ -681,7 +681,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.UpdateProfileRequest": {
+        "models.UpdateProfileRequest": {
             "type": "object",
             "properties": {
                 "avatar_url": {
@@ -716,7 +716,7 @@ const docTemplate = `{
                 }
             }
         },
-        "mentori_internal_models.UserResponse": {
+        "models.UserResponse": {
             "type": "object",
             "properties": {
                 "created_at": {
@@ -729,24 +729,32 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "profile": {
-                    "$ref": "#/definitions/mentori_internal_models.Profile"
+                    "$ref": "#/definitions/models.Profile"
                 },
                 "role": {
                     "type": "string"
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "description": "Type \"Bearer\" followed by a space and JWT token.",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
     }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
+	Version:          "1.0",
+	Host:             "localhost:8080",
 	BasePath:         "/api/v1",
 	Schemes:          []string{},
-	Title:            "",
-	Description:      "",
+	Title:            "Mentori API",
+	Description:      "Mentorship platform API with JWT authentication",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

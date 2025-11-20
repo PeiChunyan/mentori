@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Unreleased section is reserved for communicating possible future changes.
 
+## [0.1.0] - 2025-11-20
+
+### Fixed
+- Swagger UI authorization support with JWT token
+- README documentation with setup and testing instructions
+- Removed duplicated docs folder at root level
+
 ## [0.0.1] - 2025-11-19
 
 ### Added
