@@ -1,0 +1,26 @@
+# Go binaries
+*.exe
+*.dll
+*.so
+*.dylib
+bin/
+
+# Environment Variables - NEVER COMMIT!
+.env
+.env.local
+.env.*.local
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# Logs
+*.log

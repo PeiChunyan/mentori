@@ -1,0 +1,42 @@
+# Environment Variables - NEVER COMMIT THESE!
+.env
+.env.local
+.env.*.local
+.env.development
+.env.staging
+.env.production
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+
+# Logs
+*.log
+logs/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker volumes data
+postgres_data/
