@@ -4,19 +4,36 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"gorm.io/datatypes"
 )
 
 // User represents a user in the system (mentor or mentee)
 type User struct {
 	ID           uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()"`
 	Email        string    `json:"email" gorm:"uniqueIndex;not null"`
-	PasswordHash string    `json:"-" gorm:"not null"` // Never return password in JSON
-	Role         string    `json:"role" gorm:"not null;check:role IN ('mentor','mentee','admin')"`
+	PasswordHash string    `json:"-" gorm:""` // Nullable for OAuth users
+	Role         string    `json:"role" gorm:"check:role IN ('mentor','mentee','admin')"`
+	
+	// OAuth and verification fields
+	Provider     string    `json:"provider" gorm:"default:'local';index:idx_provider_user"` // local, google, apple
+	ProviderID   string    `json:"-" gorm:"index:idx_provider_user"`                        // OAuth provider user ID
+	IsVerified   bool      `json:"is_verified" gorm:"default:false"`
+	
 	CreatedAt    time.Time `json:"created_at"`
 	UpdatedAt    time.Time `json:"updated_at"`
 
 	// Relationships
 	Profile *Profile `json:"profile,omitempty" gorm:"foreignKey:UserID"`
+}
+
+// EmailVerification stores verification codes for email authentication
+type EmailVerification struct {
+	ID         uuid.UUID `json:"id" gorm:"type:uuid;primary_key;default:gen_random_uuid()"`
+	Email      string    `json:"email" gorm:"index;not null"`
+	Code       string    `json:"-" gorm:"not null"`
+	ExpiresAt  time.Time `json:"expires_at" gorm:"not null"`
+	IsUsed     bool      `json:"is_used" gorm:"default:false"`
+	CreatedAt  time.Time `json:"created_at"`
 }
 
 // Profile contains additional user information
@@ -27,8 +44,8 @@ type Profile struct {
 	LastName  string    `json:"last_name"`
 	Bio       string    `json:"bio"`
 	AvatarURL string    `json:"avatar_url"`
-	Expertise []string  `json:"expertise" gorm:"type:text[]"` // Array of skills/expertise
-	Interests []string  `json:"interests" gorm:"type:text[]"` // Array of interests
+	Expertise datatypes.JSON `json:"expertise" gorm:"type:jsonb"`
+	Interests datatypes.JSON `json:"interests" gorm:"type:jsonb"`
 	Location  string    `json:"location"`
 	IsActive  bool      `json:"is_active" gorm:"default:true"`
 	CreatedAt time.Time `json:"created_at"`
@@ -46,6 +63,41 @@ type RegisterRequest struct {
 type LoginRequest struct {
 	Email    string `json:"email" binding:"required,email"`
 	Password string `json:"password" binding:"required"`
+}
+
+// OAuthLoginRequest represents OAuth login data
+type OAuthLoginRequest struct {
+	Provider string `json:"provider" binding:"required,oneof=google apple"`
+	IDToken  string `json:"id_token" binding:"required"`
+	Role     string `json:"role" binding:"omitempty,oneof=mentor mentee"` // Only for new users
+}
+
+// EmailVerificationRequest requests a verification code
+type EmailVerificationRequest struct {
+	Email string `json:"email" binding:"required,email"`
+}
+
+// EmailVerificationLoginRequest verifies code and logs in
+type EmailVerificationLoginRequest struct {
+	Email string `json:"email" binding:"required,email"`
+	Code  string `json:"code" binding:"required,len=6"`
+	Role  string `json:"role" binding:"omitempty,oneof=mentor mentee"` // Only for new users
+}
+
+// OAuthUser represents user data from OAuth provider
+type OAuthUser struct {
+	Email      string
+	ProviderID string
+	IsVerified bool
+	Name       string
+}
+
+// NewUserResponse indicates a new user needs role selection
+type NewUserResponse struct {
+	IsNewUser bool   `json:"is_new_user"`
+	Email     string `json:"email"`
+	Provider  string `json:"provider"`
+	Token     string `json:"temp_token,omitempty"` // Temporary token for role selection
 }
 
 // AuthResponse represents authentication response

@@ -81,3 +81,46 @@ const (
 	LogLevelWarn  = "warn"
 	LogLevelError = "error"
 )
+
+// Expertise options for mentors/mentees
+var ExpertiseOptions = []string{
+	"Find a Job",
+	"Bachelor's Degree",
+	"Master's Degree",
+	"Doctoral Studies",
+	"YKI Test Preparation",
+	"Finnish Marriage & Family",
+	"Work-Life Balance",
+	"Starting a Business",
+	"Housing & Relocation",
+	"Finnish Language Learning",
+	"Healthcare System",
+	"Education System",
+	"Banking & Finance",
+	"Integration & Culture",
+	"Networking & Socializing",
+}
+
+// Interest options for mentors/mentees
+var InterestOptions = []string{
+	"Reading & Books",
+	"Bars & Nightlife",
+	"Musical Instruments",
+	"Hiking & Outdoor",
+	"Indoor Sports",
+	"Gym & Fitness",
+	"Winter Sports",
+	"Board Games",
+	"Coffee Culture",
+	"Foodie & Restaurants",
+	"Arts & Museums",
+	"Tech & Gaming",
+	"Music & Concerts",
+	"Photography",
+	"Crafts & DIY",
+	"Movies & TV Shows",
+	"Cooking & Baking",
+	"Traveling",
+	"Cycling",
+	"Running",
+}

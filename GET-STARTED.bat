@@ -1,0 +1,67 @@
+@echo off
+REM 🎉 FRONTEND COMPLETE - QUICK START SCRIPT (Windows)
+REM This script helps you get up and running in seconds
+
+cls
+echo.
+echo ╔════════════════════════════════════════════════════════════════╗
+echo ║                 🚀 MENTORI FRONTEND READY! 🚀                  ║
+echo ╚════════════════════════════════════════════════════════════════╝
+echo.
+echo ✅ All components built and ready for testing
+echo ✅ Backend integration complete
+echo ✅ Email authentication ready to test
+echo ✅ Role selection working
+echo ✅ Protected dashboard ready
+echo.
+echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.
+echo 📋 QUICK START (2 minutes)
+echo.
+echo 1️⃣  Start Backend (PowerShell/CMD 1)
+echo    cd backend
+echo    go run cmd/server/main.go
+echo.
+echo 2️⃣  Start Frontend (PowerShell/CMD 2)
+echo    cd frontend
+echo    npm install
+echo    npm run dev
+echo.
+echo 3️⃣  Open Browser
+echo    http://localhost:3000
+echo.
+echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.
+echo 📚 DOCUMENTATION
+echo.
+echo Get Started:           FRONTEND-QUICK-START.md
+echo Test Everything:       FRONTEND-TESTING-GUIDE.md
+echo Understand the Code:   FRONTEND-IMPLEMENTATION-SUMMARY.md
+echo Verify All Features:   FRONTEND-VERIFICATION-CHECKLIST.md
+echo Navigate Everything:   INDEX.md
+echo.
+echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.
+echo ✨ WHAT YOU CAN TEST RIGHT NOW
+echo.
+echo ✓ Email Signup ^(any email^)
+echo ✓ Verification Code ^(printed to backend console^)
+echo ✓ Role Selection ^(Mentor or Mentee^)
+echo ✓ Token Storage ^(persists in localStorage^)
+echo ✓ Protected Dashboard ^(shows user info^)
+echo ✓ Login Persistence ^(close browser, still logged in^)
+echo ✓ Logout ^(clear session^)
+echo.
+echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.
+echo 🔗 USEFUL LINKS
+echo.
+echo Frontend:     http://localhost:3000
+echo Backend API:  http://localhost:8080
+echo Health Check: http://localhost:8080/health
+echo.
+echo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+echo.
+echo 🎯 Next Step: Open FRONTEND-QUICK-START.md and follow the commands!
+echo.
+pause

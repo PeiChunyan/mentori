@@ -49,6 +49,8 @@ func main() {
 
 	// Initialize handlers with repositories directly
 	authHandler := handlers.NewAuthHandler(userRepo, cfg.JWTSecret)
+	oauthHandler := handlers.NewOAuthHandler(userRepo, cfg.JWTSecret)
+	emailVerificationHandler := handlers.NewEmailVerificationHandler(userRepo, cfg.JWTSecret)
 	profileHandler := handlers.NewProfileHandler(profileRepo, userRepo) // Profile handler for swagger generation
 	adminHandler := handlers.NewAdminHandler(userRepo, profileRepo)
 
@@ -76,10 +78,18 @@ func main() {
 		// Auth routes
 		auth := v1.Group("/auth")
 		{
+			// Traditional auth
 			auth.POST("/register", authHandler.Register)
 			auth.POST("/login", authHandler.Login)
 			auth.POST("/logout", authHandler.Logout)
 			auth.GET("/profile", authHandler.GetProfile) // Get current user profile
+			
+			// OAuth authentication
+			auth.POST("/oauth/login", oauthHandler.OAuthLogin)
+			
+			// Email verification authentication
+			auth.POST("/email/send-code", emailVerificationHandler.SendVerificationCode)
+			auth.POST("/email/verify", emailVerificationHandler.VerifyCodeAndLogin)
 		}
 
 		// Profile routes (require authentication)

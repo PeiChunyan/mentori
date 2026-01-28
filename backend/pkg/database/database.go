@@ -1,7 +1,13 @@
 package database
 
 import (
+	"fmt"
+	"io/ioutil"
 	"log"
+	"os"
+	"path/filepath"
+	"sort"
+	"strings"
 	"time"
 
 	"mentori/internal/models"
@@ -31,13 +37,62 @@ func InitDB(databaseURL string) {
 	sqlDB.SetConnMaxLifetime(time.Hour) // Connection max lifetime (1 hour)
 
 	// Auto-migrate the schema
-	// Drop tables if they exist to avoid migration issues during development
-	DB.Migrator().DropTable(&models.User{}, &models.Profile{})
-	if err := DB.AutoMigrate(&models.User{}, &models.Profile{}); err != nil {
+	// Optional: reset DB when explicitly requested (development only)
+	if os.Getenv("RESET_DB") == "true" {
+		log.Println("RESET_DB=true: Dropping tables before migration (development only)")
+		DB.Migrator().DropTable(&models.User{}, &models.Profile{}, &models.EmailVerification{})
+	}
+
+	if err := DB.AutoMigrate(&models.User{}, &models.Profile{}, &models.EmailVerification{}); err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
 
+	// Run SQL migration files AFTER AutoMigrate (to alter/fix tables)
+	if err := runSQLMigrations(); err != nil {
+		log.Fatal("Failed to run SQL migrations:", err)
+	}
+
 	log.Println("Database connected successfully with optimized connection pooling")
+}
+
+// runSQLMigrations executes all .sql files in the migrations directory
+func runSQLMigrations() error {
+	migrationsDir := "migrations"
+
+	// Read migration files
+	files, err := ioutil.ReadDir(migrationsDir)
+	if err != nil {
+		if os.IsNotExist(err) {
+			// Migration directory doesn't exist, skip
+			return nil
+		}
+		return fmt.Errorf("failed to read migrations directory: %w", err)
+	}
+
+	// Sort files to ensure consistent order
+	var sqlFiles []string
+	for _, file := range files {
+		if !file.IsDir() && strings.HasSuffix(file.Name(), ".sql") {
+			sqlFiles = append(sqlFiles, file.Name())
+		}
+	}
+	sort.Strings(sqlFiles)
+
+	// Execute each migration file
+	for _, fileName := range sqlFiles {
+		filePath := filepath.Join(migrationsDir, fileName)
+		content, err := ioutil.ReadFile(filePath)
+		if err != nil {
+			return fmt.Errorf("failed to read migration file %s: %w", fileName, err)
+		}
+
+		log.Printf("Running migration: %s", fileName)
+		if err := DB.Exec(string(content)).Error; err != nil {
+			return fmt.Errorf("failed to execute migration %s: %w", fileName, err)
+		}
+	}
+
+	return nil
 }
 
 func GetDB() *gorm.DB {
