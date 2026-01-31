@@ -77,7 +77,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50 flex flex-col">
       {/* Navigation */}
       <nav className="px-6 py-4 flex justify-between items-center bg-white/80 backdrop-blur-sm">
-        <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">mentori</div>
+        <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">mentori network</div>
         <div className="flex gap-3">
           <button
             onClick={() => setLanguage('en')}
@@ -181,7 +181,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-6 px-6 mt-auto">
         <div className="max-w-5xl mx-auto text-center text-slate-300 text-xs">
-          <p>© 2026 Mentori. Helping newcomers build successful lives in Finland. 🇫🇮</p>
+          <p>© 2026 Mentori Network. Helping newcomers build successful lives in Finland. 🇫🇮</p>
         </div>
       </footer>
     </div>

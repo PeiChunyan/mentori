@@ -1,4 +1,4 @@
-# Mentori Platform - Development Progress
+# Mentori Network - Development Progress
 
 **Last Updated**: January 28, 2026
 

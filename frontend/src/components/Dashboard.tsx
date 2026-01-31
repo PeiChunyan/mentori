@@ -176,7 +176,7 @@ export default function Dashboard() {
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">Mentori</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Mentori Network</h1>
           <div className="flex gap-4 items-center">
             <button
               onClick={() => router.push('/dashboard')}
