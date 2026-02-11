@@ -10,6 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unreleased section is reserved for communicating possible future changes.
 
 
+## [0.3.0] - 2026-02-11
+
+### Added
+- Expanded core platform capabilities beyond v0.2.0 (messaging, notifications)
+- User preference controls and additional account management flows
+- Reliability and performance improvements across API and database
+- UX improvements for validation, loading, and error handling
+
+
 ## [0.2.0] - 2026-01-28
 
 ### Added

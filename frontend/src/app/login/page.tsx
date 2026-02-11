@@ -27,6 +27,7 @@ export default function LoginPage() {
       };
 
       const response = await authApi.authLoginPost(loginRequest);
+      console.log('Login successful:', response.data);
 
       // Store token in localStorage
       if (response.data.token) {
@@ -36,6 +37,7 @@ export default function LoginPage() {
       // Redirect to profile page
       router.push('/profile');
     } catch (err: any) {
+      console.error('Login failed:', err);
       setError(err.response?.data?.error || 'Login failed');
     } finally {
       setLoading(false);

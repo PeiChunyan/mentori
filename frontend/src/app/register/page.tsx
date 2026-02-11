@@ -31,6 +31,7 @@ export default function RegisterPage() {
       };
 
       const response = await authApi.authRegisterPost(registerRequest);
+      console.log('Registration successful:', response.data);
 
       // Show success message
       setSuccess(true);
@@ -40,6 +41,7 @@ export default function RegisterPage() {
         router.push('/login');
       }, 2000);
     } catch (err: any) {
+      console.error('Registration failed:', err);
       setError(err.response?.data?.error || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
