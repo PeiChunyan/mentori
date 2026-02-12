@@ -12,18 +12,17 @@ export default function LandingPage() {
 
   useEffect(() => {
     setIsLoaded(true);
-    const token = authStorage.getToken();
-    if (token) {
-      router.push('/dashboard');
-    }
-  }, [router]);
+  }, []);
 
   const content = {
     en: {
       hero_main: "Get a Real Guide, Not Just Information",
       hero_desc: "Get paired with someone who will help you build that life.",
       cta: "Find Your Mentor Now",
+      survey_cta: "Share Your Feedback",
       why: "Why Mentori",
+      contact_title: "Interested in the Full Platform?",
+      contact_desc: "Share your thoughts and we'll keep you updated.",
       benefits: [
         { 
           title: "Real Human Connection", 
@@ -48,7 +47,10 @@ export default function LandingPage() {
       hero_main: "Saa Oikea Opas, Ei Vain Tietoa",
       hero_desc: "Yhdistä jonkun kanssa, joka auttaa sinua rakentamaan elämän.",
       cta: "Löydä Mentorin",
+      survey_cta: "Jaa Palautteesi",
       why: "Miksi Mentori",
+      contact_title: "Kiinnostunut Täydestä Alustasta?",
+      contact_desc: "Jaa ajatuksesi ja pidämme sinut ajan tasalla.",
       benefits: [
         { 
           title: "Oikea Ihminen", 
@@ -102,6 +104,15 @@ export default function LandingPage() {
         </div>
       </nav>
 
+      {/* Demo Disclaimer Banner */}
+      <div className="bg-blue-50 border-b border-blue-200 py-3 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-blue-800 text-sm">
+            🎭 <strong>Demo Mode:</strong> This is a demonstration. No real data is collected or stored except your feedback.
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
         <div className="max-w-2xl w-full text-center">
@@ -119,15 +130,24 @@ export default function LandingPage() {
             {t.hero_desc}
           </p>
 
-          {/* CTA Button */}
-          <button
-            onClick={() => router.push('/auth')}
-            className={`bg-gradient-to-r from-orange-400 to-pink-500 hover:from-orange-500 hover:to-pink-600 text-white font-semibold py-3 px-10 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mb-3 transition-all duration-1000 delay-200 ${
-              isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            {t.cta}
-          </button>
+          {/* CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row gap-3 justify-center items-center mb-3 transition-all duration-1000 delay-200 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            <button
+              onClick={() => router.push('/auth')}
+              className="bg-gradient-to-r from-orange-400 to-pink-500 hover:from-orange-500 hover:to-pink-600 text-white font-semibold py-3 px-10 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              {t.cta}
+            </button>
+            
+            <button
+              onClick={() => window.open('YOUR_GOOGLE_FORM_LINK_HERE', '_blank')}
+              className="bg-white border-2 border-orange-400 text-orange-600 hover:bg-orange-50 font-semibold py-3 px-10 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+            >
+              📋 {t.survey_cta}
+            </button>
+          </div>
 
           <p className="text-slate-500 text-xs">No credit card needed • Sign up in 2 minutes</p>
         </div>

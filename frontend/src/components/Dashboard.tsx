@@ -43,6 +43,11 @@ export default function Dashboard() {
   const isDashboard = pathname === '/dashboard';
   const isMentors = pathname === '/mentors';
 
+  const handleLogout = () => {
+    authStorage.clear();
+    router.push('/');
+  };
+
   // Calculate profile completion percentage
   const calculateProfileCompletion = (prof: Profile | null): number => {
     if (!prof) return 0;
@@ -165,11 +170,6 @@ export default function Dashboard() {
   if (!user) {
     return null;
   }
-
-  const handleLogout = () => {
-    authStorage.clear();
-    router.push('/auth');
-  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -299,25 +299,33 @@ export default function Dashboard() {
                   <dd className="text-gray-900 font-medium">{profile.expertise?.length || 0} expertise areas</dd>
                 </div>
               </dl>
-              <button
-                onClick={() => router.push('/profile/create')}
-                className="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 font-medium"
-              >
-                Edit Profile
-              </button>
+              <div className="mt-6 space-y-3">
+                <button
+                  disabled
+                  className="w-full bg-gray-300 text-gray-500 py-2 rounded-lg font-medium cursor-not-allowed opacity-60"
+                >
+                  Edit Profile (Demo Only)
+                </button>
+                <p className="text-xs text-gray-600 text-center">
+                  🎭 Profile editing disabled in demo mode
+                </p>
+              </div>
             </div>
           ) : (
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg p-6 text-white">
-              <h3 className="text-xl font-semibold mb-2">Complete Your Profile</h3>
-              <p className="text-indigo-100 mb-6">
-                Set up your profile to unlock personalized mentor recommendations and start your mentorship journey!
+            <div className="bg-gradient-to-br from-gray-400 to-gray-500 rounded-lg p-6 text-white">
+              <h3 className="text-xl font-semibold mb-2">Profile Creation (Demo)</h3>
+              <p className="text-gray-100 mb-6">
+                In the full version, you would create and customize your profile here.
               </p>
               <button
-                onClick={() => router.push('/profile/create')}
-                className="w-full bg-white text-indigo-600 py-3 rounded-lg hover:bg-gray-100 font-bold text-lg transition-all"
+                disabled
+                className="w-full bg-gray-600 text-gray-300 py-3 rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
               >
-                Create Profile Now
+                Create Profile (Not Available in Demo)
               </button>
+              <p className="text-xs text-gray-200 text-center mt-3">
+                🎭 This is a demo - profile features are disabled
+              </p>
             </div>
           )}
         </div>
