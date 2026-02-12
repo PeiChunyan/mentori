@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { apiClient } from '@/lib/api';
 import { authStorage } from '@/lib/auth';
+import { searchDemoProfiles, DemoProfile } from '@/lib/demo-data';
 
 interface MentorProfile {
   id: string;
@@ -16,6 +17,7 @@ interface MentorProfile {
   interests: string[];
   location: string;
   is_active: boolean;
+  role?: 'mentor' | 'mentee';
 }
 
 // Finnish cities
@@ -78,16 +80,14 @@ export default function MentorDiscovery() {
       // If current user is mentor, show mentees; if mentee, show mentors
       const targetRole = activeUser?.role === 'mentor' ? 'mentee' : 'mentor';
       
-      const response = await apiClient.searchProfiles({
+      // Use demo data instead of API call
+      const demoFilters = {
         role: targetRole,
         ...filters,
-      });
-
-      if (response.status === 200) {
-        setMentors(response.data || []);
-      } else {
-        setError(response.error?.message || `Failed to load ${targetRole}s`);
-      }
+      };
+      
+      const demoProfiles = searchDemoProfiles(demoFilters);
+      setMentors(demoProfiles);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
@@ -144,6 +144,13 @@ export default function MentorDiscovery() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Demo Banner */}
+      <div className="bg-yellow-100 border-b-2 border-yellow-300 py-2 px-4 text-center">
+        <p className="text-sm text-yellow-800">
+          🎭 <strong>DEMO MODE</strong> - This is a demonstration. No real data is collected or stored.
+        </p>
+      </div>
+
       {/* Navigation Header */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -452,8 +459,11 @@ export default function MentorDiscovery() {
                 )}
 
                 <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-medium">
-                  Request Mentorship
+                  Send Message (Demo)
                 </button>
+                <p className="text-xs text-center text-gray-500 mt-2">
+                  💬 Messaging is simulated - no real messages are sent
+                </p>
               </div>
             </div>
           </div>

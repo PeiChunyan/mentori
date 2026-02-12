@@ -173,6 +173,13 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Demo Banner */}
+      <div className="bg-yellow-100 border-b-2 border-yellow-300 py-2 px-4 text-center">
+        <p className="text-sm text-yellow-800">
+          🎭 <strong>DEMO MODE</strong> - This is a demonstration. No real data is collected or stored.
+        </p>
+      </div>
+
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
