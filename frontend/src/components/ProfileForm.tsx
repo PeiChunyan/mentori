@@ -97,7 +97,7 @@ export default function ProfileForm({ initialData, onSuccess, isEditing = false 
   const [selectedExpertise, setSelectedExpertise] = useState('');
   const [selectedInterest, setSelectedInterest] = useState('');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -115,7 +115,7 @@ export default function ProfileForm({ initialData, onSuccess, isEditing = false 
   const removeExpertise = (item: string) => {
     setFormData((prev) => ({
       ...prev,
-      expertise: prev.expertise.filter((e) => e !== item),
+      expertise: prev.expertise.filter((e: string) => e !== item),
     }));
   };
 
@@ -132,7 +132,7 @@ export default function ProfileForm({ initialData, onSuccess, isEditing = false 
   const removeInterest = (item: string) => {
     setFormData((prev) => ({
       ...prev,
-      interests: prev.interests.filter((i) => i !== item),
+      interests: prev.interests.filter((i: string) => i !== item),
     }));
   };
 
@@ -297,7 +297,7 @@ export default function ProfileForm({ initialData, onSuccess, isEditing = false 
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
-          {formData.expertise.map((item) => (
+          {formData.expertise.map((item: string) => (
             <div key={item} className="flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-full">
               <span className="text-sm text-blue-900">{item}</span>
               <button
@@ -337,7 +337,7 @@ export default function ProfileForm({ initialData, onSuccess, isEditing = false 
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
-          {formData.interests.map((item) => (
+          {formData.interests.map((item: string) => (
             <div key={item} className="flex items-center gap-2 bg-green-100 px-3 py-1 rounded-full">
               <span className="text-sm text-green-900">{item}</span>
               <button

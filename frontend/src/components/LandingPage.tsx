@@ -142,7 +142,7 @@ export default function LandingPage() {
             </button>
             
             <button
-              onClick={() => window.open('YOUR_GOOGLE_FORM_LINK_HERE', '_blank')}
+              onClick={() => window.open('https://forms.gle/TjdWM3NGif2gRuZq7', '_blank')}
               className="bg-white border-2 border-orange-400 text-orange-600 hover:bg-orange-50 font-semibold py-3 px-10 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
             >
               📋 {t.survey_cta}

@@ -102,8 +102,7 @@ export default function Dashboard() {
       }
     } catch (err) {
       setError('Failed to load profile');
-      // Use mock mentors for testing if profile load fails
-      setRecommendedMentors(MOCK_MENTORS);
+      // Profile load fails in demo mode - recommended mentors will be empty
     } finally {
       setLoading(false);
     }
@@ -120,17 +119,20 @@ export default function Dashboard() {
 
       const results = await apiClient.searchProfiles(searchQuery);
       
-      // Filter out current user and calculate match scores
-      const mentors = results
-        .filter((m: any) => m.id !== userProfile.id)
-        .map((mentor: any) => ({
-          ...mentor,
-          matchScore: calculateMatchScore(userProfile, mentor),
-        }))
-        .sort((a: any, b: any) => (b.matchScore || 0) - (a.matchScore || 0))
-        .slice(0, 3);
+      // Check if we have data before filtering
+      if (results.data && Array.isArray(results.data)) {
+        // Filter out current user and calculate match scores
+        const mentors = results.data
+          .filter((m: any) => m.id !== userProfile.id)
+          .map((mentor: any) => ({
+            ...mentor,
+            matchScore: calculateMatchScore(userProfile, mentor),
+          }))
+          .sort((a: any, b: any) => (b.matchScore || 0) - (a.matchScore || 0))
+          .slice(0, 3);
 
-      setRecommendedMentors(mentors);
+        setRecommendedMentors(mentors);
+      }
     } catch (err) {
       console.log('Failed to load recommended mentors');
     }
