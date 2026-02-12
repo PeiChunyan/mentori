@@ -44,47 +44,32 @@ export default function DemoLogin() {
   if (showDisclaimer) {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50 p-4">
-        <div className="bg-white rounded-2xl shadow-2xl flex flex-col max-h-96 sm:max-h-[90vh] w-full max-w-2xl">
-          {/* Header - Fixed */}
-          <div className="flex-shrink-0 text-center px-6 pt-6 pb-4 border-b border-gray-200">
-            <div className="w-20 h-20 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-              <span className="text-4xl">⚠️</span>
+        <div className="bg-white rounded-2xl shadow-2xl flex flex-col max-w-md w-full gap-6 p-6">
+          {/* Icon & Title */}
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+              <span className="text-3xl">⚠️</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900">Demo Environment</h2>
-            <p className="text-sm text-gray-500">For Demonstration Purposes Only</p>
+            <h2 className="text-xl font-bold text-gray-900">Demo Only</h2>
           </div>
 
-          {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            <div className="space-y-4">
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-                <h3 className="font-bold text-yellow-800 mb-2">⚠️ Important Notice</h3>
-                <p className="text-yellow-700 text-sm">
-                  This is a <strong>demonstration version</strong> of Mentori Network. This is a pivot prototype to showcase features and functionality.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-                <h3 className="font-bold text-blue-800 mb-2">🔒 No Data Collection</h3>
-                <p className="text-blue-700 text-sm">
-                  <strong>No personal data is collected, stored, or transmitted.</strong> All profiles, messages, and interactions are simulated for demonstration only.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer - Fixed */}
-          <div className="flex-shrink-0 border-t border-gray-200 px-6 py-6 space-y-3">
-            <button
-              onClick={handleAcknowledgeDisclaimer}
-              className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg hover:shadow-xl active:scale-95 text-base sm:text-lg"
-            >
-              I Understand - Continue to Demo
-            </button>
-            <p className="text-xs text-gray-500 text-center">
-              By continuing, you acknowledge this is a demonstration only
+          {/* Simple Message */}
+          <div className="text-center">
+            <p className="text-gray-700 text-sm mb-2">
+              This is a demonstration. No real data is collected or stored.
+            </p>
+            <p className="text-gray-600 text-xs">
+              Everything is simulated for testing purposes.
             </p>
           </div>
+
+          {/* Button */}
+          <button
+            onClick={handleAcknowledgeDisclaimer}
+            className="w-full px-6 py-3 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg active:scale-95"
+          >
+            Continue
+          </button>
         </div>
       </div>
     );
