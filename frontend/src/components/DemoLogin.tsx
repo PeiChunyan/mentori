@@ -43,17 +43,17 @@ export default function DemoLogin() {
 
   if (showDisclaimer) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full mx-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50 p-4 overflow-y-auto">
+        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-2xl w-full my-4">
           <div className="text-center mb-6">
             <div className="w-20 h-20 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
               <span className="text-4xl">⚠️</span>
             </div>
-            <h2 className="text-3xl font-bold mb-2 text-gray-900">Demo Environment</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900">Demo Environment</h2>
             <p className="text-sm text-gray-500">For Demonstration Purposes Only</p>
           </div>
 
-          <div className="space-y-4 mb-6 text-left">
+          <div className="space-y-4 mb-8 text-left max-h-96 overflow-y-auto">
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <h3 className="font-bold text-yellow-800 mb-2">⚠️ Important Notice</h3>
               <p className="text-yellow-700 text-sm">
@@ -79,21 +79,21 @@ export default function DemoLogin() {
               <h3 className="font-bold text-green-800 mb-2">✅ What You Can Do</h3>
               <ul className="text-green-700 text-sm list-disc list-inside space-y-1">
                 <li>Browse mentor and mentee profiles</li>
-                <li>See how the messaging feature would work</li>
+                <li>💬 Try the messaging feature with demo conversations</li>
                 <li>Explore the user interface and features</li>
                 <li>Test the platform functionality</li>
               </ul>
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center space-y-3">
             <button
               onClick={handleAcknowledgeDisclaimer}
-              className="px-8 py-3 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg hover:shadow-xl active:scale-95 text-base sm:text-lg touch-target"
             >
               I Understand - Continue to Demo
             </button>
-            <p className="text-xs text-gray-500 mt-3">
+            <p className="text-xs text-gray-500">
               By continuing, you acknowledge this is a demonstration only
             </p>
           </div>

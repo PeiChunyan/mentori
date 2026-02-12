@@ -63,7 +63,15 @@ export default function MessagesPage() {
   useEffect(() => {
     const savedUser = authStorage.getUser();
     if (!savedUser) {
-      router.push('/auth');
+      const demoUser = {
+        id: 'demo-user',
+        email: 'demo@mentori.network',
+        role: 'mentee',
+        created_at: new Date().toISOString(),
+      };
+      authStorage.saveUser(demoUser);
+      authStorage.saveToken('demo-token');
+      setUser(demoUser);
       return;
     }
     setUser(savedUser);
