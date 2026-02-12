@@ -42,6 +42,7 @@ export default function Dashboard() {
   // Derived values
   const isDashboard = pathname === '/dashboard';
   const isMentors = pathname === '/mentors';
+  const isMessages = pathname === '/messages';
 
   const handleLogout = () => {
     authStorage.clear();
@@ -208,6 +209,16 @@ export default function Dashboard() {
               {user?.role === 'mentor' ? 'Browse Mentees' : 'Browse Mentors'}
             </button>
             <button
+              onClick={() => router.push('/messages')}
+              className={`font-medium transition-colors ${
+                isMessages
+                  ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              💬 Messages
+            </button>
+            <button
               onClick={handleLogout}
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium"
             >
@@ -242,10 +253,14 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600">0</div>
-                <p className="text-gray-600 text-sm mt-1">Messages</p>
-              </div>
+              <button
+                onClick={() => router.push('/messages')}
+                className="w-full text-center hover:bg-purple-50 transition-colors rounded-lg py-2"
+              >
+                <div className="text-3xl font-bold text-purple-600">3</div>
+                <p className="text-gray-600 text-sm mt-1">💬 Active Messages</p>
+                <p className="text-xs text-purple-500 mt-2">Click to view conversations</p>
+              </button>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="text-center">
