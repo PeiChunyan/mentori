@@ -70,23 +70,6 @@ export default function DemoLogin() {
                   <strong>No personal data is collected, stored, or transmitted.</strong> All profiles, messages, and interactions are simulated for demonstration only.
                 </p>
               </div>
-
-              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded">
-                <h3 className="font-bold text-purple-800 mb-2">🎭 Simulated Experience</h3>
-                <p className="text-purple-700 text-sm">
-                  All mentors, mentees, and messages are fictional. Login does not require credentials. Nothing you do here is real or permanent.
-                </p>
-              </div>
-
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
-                <h3 className="font-bold text-green-800 mb-2">✅ What You Can Do</h3>
-                <ul className="text-green-700 text-sm list-disc list-inside space-y-1">
-                  <li>Browse mentor and mentee profiles</li>
-                  <li>💬 Try the messaging feature with demo conversations</li>
-                  <li>Explore the user interface and features</li>
-                  <li>Test the platform functionality</li>
-                </ul>
-              </div>
             </div>
           </div>
 
