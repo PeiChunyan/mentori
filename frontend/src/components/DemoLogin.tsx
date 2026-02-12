@@ -43,9 +43,10 @@ export default function DemoLogin() {
 
   if (showDisclaimer) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50 p-4 overflow-y-auto">
-        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-2xl w-full my-4">
-          <div className="text-center mb-6">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-blue-50 p-4">
+        <div className="bg-white rounded-2xl shadow-2xl flex flex-col max-h-96 sm:max-h-[90vh] w-full max-w-2xl">
+          {/* Header - Fixed */}
+          <div className="flex-shrink-0 text-center px-6 pt-6 pb-4 border-b border-gray-200">
             <div className="w-20 h-20 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
               <span className="text-4xl">⚠️</span>
             </div>
@@ -53,47 +54,51 @@ export default function DemoLogin() {
             <p className="text-sm text-gray-500">For Demonstration Purposes Only</p>
           </div>
 
-          <div className="space-y-4 mb-8 text-left max-h-96 overflow-y-auto">
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
-              <h3 className="font-bold text-yellow-800 mb-2">⚠️ Important Notice</h3>
-              <p className="text-yellow-700 text-sm">
-                This is a <strong>demonstration version</strong> of Mentori Network. This is a pivot prototype to showcase features and functionality.
-              </p>
-            </div>
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto px-6 py-6">
+            <div className="space-y-4">
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                <h3 className="font-bold text-yellow-800 mb-2">⚠️ Important Notice</h3>
+                <p className="text-yellow-700 text-sm">
+                  This is a <strong>demonstration version</strong> of Mentori Network. This is a pivot prototype to showcase features and functionality.
+                </p>
+              </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
-              <h3 className="font-bold text-blue-800 mb-2">🔒 No Data Collection</h3>
-              <p className="text-blue-700 text-sm">
-                <strong>No personal data is collected, stored, or transmitted.</strong> All profiles, messages, and interactions are simulated for demonstration only.
-              </p>
-            </div>
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                <h3 className="font-bold text-blue-800 mb-2">🔒 No Data Collection</h3>
+                <p className="text-blue-700 text-sm">
+                  <strong>No personal data is collected, stored, or transmitted.</strong> All profiles, messages, and interactions are simulated for demonstration only.
+                </p>
+              </div>
 
-            <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded">
-              <h3 className="font-bold text-purple-800 mb-2">🎭 Simulated Experience</h3>
-              <p className="text-purple-700 text-sm">
-                All mentors, mentees, and messages are fictional. Login does not require credentials. Nothing you do here is real or permanent.
-              </p>
-            </div>
+              <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded">
+                <h3 className="font-bold text-purple-800 mb-2">🎭 Simulated Experience</h3>
+                <p className="text-purple-700 text-sm">
+                  All mentors, mentees, and messages are fictional. Login does not require credentials. Nothing you do here is real or permanent.
+                </p>
+              </div>
 
-            <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
-              <h3 className="font-bold text-green-800 mb-2">✅ What You Can Do</h3>
-              <ul className="text-green-700 text-sm list-disc list-inside space-y-1">
-                <li>Browse mentor and mentee profiles</li>
-                <li>💬 Try the messaging feature with demo conversations</li>
-                <li>Explore the user interface and features</li>
-                <li>Test the platform functionality</li>
-              </ul>
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                <h3 className="font-bold text-green-800 mb-2">✅ What You Can Do</h3>
+                <ul className="text-green-700 text-sm list-disc list-inside space-y-1">
+                  <li>Browse mentor and mentee profiles</li>
+                  <li>💬 Try the messaging feature with demo conversations</li>
+                  <li>Explore the user interface and features</li>
+                  <li>Test the platform functionality</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div className="text-center space-y-3">
+          {/* Footer - Fixed */}
+          <div className="flex-shrink-0 border-t border-gray-200 px-6 py-6 space-y-3">
             <button
               onClick={handleAcknowledgeDisclaimer}
-              className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg hover:shadow-xl active:scale-95 text-base sm:text-lg touch-target"
+              className="w-full px-8 py-4 bg-gradient-to-r from-orange-400 to-pink-500 text-white rounded-lg font-semibold hover:from-orange-500 hover:to-pink-600 transition shadow-lg hover:shadow-xl active:scale-95 text-base sm:text-lg"
             >
               I Understand - Continue to Demo
             </button>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 text-center">
               By continuing, you acknowledge this is a demonstration only
             </p>
           </div>
