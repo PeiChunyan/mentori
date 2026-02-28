@@ -9,12 +9,20 @@ export default function DemoLogin() {
   const [showDisclaimer, setShowDisclaimer] = useState(true);
 
   useEffect(() => {
+    // If already logged in, redirect to dashboard
+    const user = authStorage.getUser();
+    const token = authStorage.getToken();
+    if (user && token) {
+      router.push('/dashboard');
+      return;
+    }
+
     // Check if user has already acknowledged the disclaimer
     const ack = localStorage.getItem('mentori_demo_ack');
     if (ack === '1') {
       setShowDisclaimer(false);
     }
-  }, []);
+  }, [router]);
 
   const handleRoleSelect = (role: 'mentor' | 'mentee') => {
     // Generate a random demo user

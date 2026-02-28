@@ -44,9 +44,9 @@ export default function Dashboard() {
   const isMentors = pathname === '/mentors';
   const isMessages = pathname === '/messages';
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     authStorage.clear();
-    router.push('/');
+    await router.push('/');
   };
 
   // Calculate profile completion percentage
@@ -185,32 +185,32 @@ export default function Dashboard() {
 
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">Mentori Network</h1>
-          <div className="flex gap-4 items-center">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Mentori Network</h1>
+          <div className="flex flex-wrap gap-2 sm:gap-4 items-center w-full sm:w-auto">
             <button
               onClick={() => router.push('/dashboard')}
-              className={`font-medium transition-colors ${
+              className={`text-sm sm:text-base font-medium transition-colors ${
                 isDashboard
                   ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              My Dashboard
+              Dashboard
             </button>
             <button
               onClick={() => router.push('/mentors')}
-              className={`font-medium transition-colors ${
+              className={`text-sm sm:text-base font-medium transition-colors ${
                 isMentors
                   ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
                   : 'text-gray-600 hover:text-gray-900'
               }`}
             >
-              {user?.role === 'mentor' ? 'Browse Mentees' : 'Browse Mentors'}
+              {user?.role === 'mentor' ? 'Mentees' : 'Mentors'}
             </button>
             <button
               onClick={() => router.push('/messages')}
-              className={`font-medium transition-colors ${
+              className={`text-sm sm:text-base font-medium transition-colors ${
                 isMessages
                   ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
                   : 'text-gray-600 hover:text-gray-900'
@@ -220,7 +220,7 @@ export default function Dashboard() {
             </button>
             <button
               onClick={handleLogout}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium"
+              className="px-3 sm:px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium text-sm sm:text-base"
             >
               Logout
             </button>
